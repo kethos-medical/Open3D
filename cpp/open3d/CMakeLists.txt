@@ -278,3 +278,7 @@ endif()
 # Export GUI_RESOURCE_FILES to parent CMake context (cpp/open3d/)
 set(GUI_RESOURCE_FILES ${GUI_RESOURCE_FILES} PARENT_SCOPE)
 set(GUI_RESOURCE_DIR ${GUI_RESOURCE_DIR} PARENT_SCOPE)
+
+# Fix system OpenSSL propagation to libOpen3D.so
+find_package(OpenSSL REQUIRED)
+target_link_libraries(Open3D PRIVATE OpenSSL::SSL OpenSSL::Crypto)
