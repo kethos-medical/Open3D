@@ -4,7 +4,6 @@ target_sources(utility PRIVATE
     CompilerInfo.cpp
     Console.cpp
     CPUInfo.cpp
-    Download.cpp
     Eigen.cpp
     Extract.cpp
     ExtractZIP.cpp
