@@ -189,16 +189,5 @@ if(WITH_STUBGEN)
     if(NOT IGNORE_STUBGEN_ERRORS)
         set(PYBIND11_STUBGEN_FATAL_FLAGS COMMAND_ERROR_IS_FATAL ANY)
     endif()
-    # The caller must install the package runtime requirements before building.
-    # stubgen imports open3d from PYTHON_PACKAGE_DST_DIR using that environment.
-    message(STATUS "Generating typing stubs...")
-    execute_process(
-        COMMAND ${CMAKE_COMMAND} -E env
-                "PYTHONPATH=${PYTHON_PACKAGE_DST_DIR}"
-                ${Python3_EXECUTABLE} -m pybind11_stubgen open3d -o "${PYTHON_PACKAGE_DST_DIR}"
-                ${PYBIND11_STUBGEN_FLAGS}
-        COMMAND_ECHO STDOUT
-        ${PYBIND11_STUBGEN_FATAL_FLAGS}
-    )
-    file(WRITE "${PYTHON_PACKAGE_DST_DIR}/open3d/py.typed" "")
+    
 endif()
